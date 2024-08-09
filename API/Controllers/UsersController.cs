@@ -1,21 +1,23 @@
 ﻿using API.Data;
 using API.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace API;
+namespace API.Controllers;
 
-[ApiController]
-[Route("api/[Controller]")]
-public class usersController(DataContext context) : ControllerBase
+//[Authorize]
+public class usersController(DataContext context) : BaseApiController
 {
   // private readonly DataContext _context = context;
 
+    [AllowAnonymous]
     [HttpGet]
    public async Task<ActionResult<IEnumerable<AppUser>>>GetUser()
    {
       var user =await context.Users.ToListAsync();
       return Ok(user);
    }
+   [Authorize]
    [HttpGet("{id:int}")]
    public async Task<ActionResult<AppUser>> GetUser(int id)
    {
