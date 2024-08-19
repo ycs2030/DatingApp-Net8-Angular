@@ -1,4 +1,5 @@
 @API_HostAddress = https://localhost:5001
+@ACCESS_JWT=eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6ImRhdmUiLCJuYmYiOjE3MjMyNDE3NTgsImV4cCI6MTcyMzg0NjU1OCwiaWF0IjoxNzIzMjQxNzU4fQ.C2Xi9R_D2NH8WFzUrkTQp3UFG-uhLakLDd4Mke-9tdlVxA56H0vWKEq6z0QMjslTlBCjunuCP3poPt59ldqwkw
 
 GET {{API_HostAddress}}/weatherforecast
 Accept: application/json
@@ -9,13 +10,14 @@ Accept: application/json
 ###
 GET {{API_HostAddress}}/api/users/1
 Accept: application/json
+Authorization: Bearer {{ACCESS_JWT}} 
 
 ###
 POST {{API_HostAddress}}/api/account/register 
 Content-Type: application/json
 
 {
-	"username": "",
+	"username": "Bob",
 	"password": ""
 }
 ###
